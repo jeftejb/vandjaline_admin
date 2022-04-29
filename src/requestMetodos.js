@@ -1,5 +1,7 @@
-import axios from 'axios'
+import axios from 'axios';
+import dotenv from 'dotenv';
 
+dotenv.config();
 
 var TOKEN = ""
 
@@ -16,7 +18,7 @@ TOKEN = res
 }
 
 
-const BASE_URL = "http://vandjaline-f.herokuapp.com/api/" //"http://localhost:8080/api/"
+const BASE_URL = process.env.REACT_APP_API_LINK // "http://localhost:8080/api/"
 export const publicRequest = axios.create({
     baseURL:BASE_URL,
 })

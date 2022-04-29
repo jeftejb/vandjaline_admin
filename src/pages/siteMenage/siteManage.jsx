@@ -12,6 +12,9 @@ import { Link} from "react-router-dom";
 import { userRequest } from "../../requestMetodos";
 import SiteInput from "../../components/InputSite/InputSite";
 import {updateEstabelecimento} from"./../../redux/apiCalls"
+import dotenv from "dotenv"
+
+dotenv.config();
 
 export default function SiteManage() {
 
@@ -84,6 +87,10 @@ updateEstabelecimento(loja._id, imput)
               <LocationSearching className="userShowIcon" />
               <span className="userShowInfoTitle">{loja?.enderecoLoja}</span>
             </div>
+            <div className="userShowInfo">
+              <LocationSearching className="userShowIcon" />
+              <span className="userShowInfoTitle">Link para partilhar : {process.env.REACT_APP_SITE_LINK}/estabelecimento/{loja?._id}</span>
+            </div>
           </div>
         </div>
         <div className="userUpdate">
@@ -131,7 +138,7 @@ updateEstabelecimento(loja._id, imput)
                 />
               </div>
              
-              <span>A carteira digital "Kamba" é um aplicativo inovador 100% angolano que permite efectuar varios tipos de operações na internet como pagamentos transferencias e outros, link para fazer o download: <a href="https://m.usekamba.com/convite/86C210"> Clique aqui para baixar o App</a> </span>
+              <span>A carteira digital "Kamba" é um aplicativo inovador 100% angolano que permite efectuar varios tipos de operações na internet como pagamentos transferencias e outros, link para fazer o download: <a href={process.env.REACT_APP_SITE_LINK_KAMBA}> Clique aqui para baixar o App</a> </span>
 
               
             </div>

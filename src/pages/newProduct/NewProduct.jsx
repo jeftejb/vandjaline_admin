@@ -142,6 +142,9 @@ console.log(file? URL.createObjectURL(file) :"")
           <option disabled>Celecione uma cor </option>
             <option   value="yellow" style={{color : "yellow"}}>Amarelo</option>
             <option   value="blue"style={{color : "blue"}}>Azul</option>
+            <option   value="black"style={{color : "black"}}>Preto</option>
+            <option   value="orange"style={{color : "orange"}}>Laranja</option>
+            <option   value="green"style={{color : "green"}}>Verde</option>
           </select>
         </div>
         <div className="addProductItem">
@@ -169,6 +172,10 @@ console.log(file? URL.createObjectURL(file) :"")
         <div className="addProductItem">
           <label>Nome do Estabelecomento</label>
           <input name="loja"  type="text" placeholder="Estabelecimento" value={loja?.nomeLoja} disabled  />
+        </div>
+        <div className="addProductItem">
+          <label>Tipo</label>
+          <input name="actuacaoLoja"  type="text" placeholder="Estabelecimento" value={loja?.actuacao} disabled  />
         </div>
         <button onClick={handelClick} className="addProductButton">Criar</button>
       </form>
