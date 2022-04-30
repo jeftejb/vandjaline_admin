@@ -1,7 +1,7 @@
 import React from "react"
 import { useState } from "react"
 import {useDispatch} from "react-redux"
-import {loginUser, loginAdmin} from "../../redux/apiCalls"
+import {loginUser, loginAdmin} from "./../../redux/apiCalls"
 
 const Login = () => {
     const [nomeUsuario , setUserName] = useState("")
