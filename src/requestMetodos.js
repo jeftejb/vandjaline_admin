@@ -6,11 +6,11 @@ dotenv.config();
 var TOKEN = ""
 
 if(localStorage.getItem("persist:vandja") !== null){
- if (JSON?.parse(JSON.parse(localStorage.getItem("persist:vandja"))?.user).currentUser){
-const res  =  JSON?.parse(JSON.parse(localStorage.getItem("persist:vandja"))?.user).currentUser?.acessoToken
+ if (JSON?.parse(JSON.parse(localStorage.getItem("persist:vandja"))?.user)?.currentUser){
+const res  =  JSON?.parse(JSON.parse(localStorage.getItem("persist:vandja"))?.user)?.currentUser?.acessoToken
 TOKEN = res
 }else {
- const  res = JSON?.parse(JSON.parse(localStorage.getItem("persist:vandja"))?.lojaLogin).currentLoja?.acessoToken
+ const  res = JSON?.parse(JSON.parse(localStorage.getItem("persist:vandja"))?.lojaLogin)?.currentLoja?.acessoToken
  TOKEN = res
 }
 }else{

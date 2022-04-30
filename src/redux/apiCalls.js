@@ -35,7 +35,7 @@ export const loginUser = async (dispatch,user)=>{
 
     try{
 
-        const res = await publicRequest.post("autenticacao/login/usuario", user)
+        const res = await publicRequest.post("/autenticacao/login/usuario", user)
         dispatch(loginUserSucess(res.data))
        
     }catch(erro){
