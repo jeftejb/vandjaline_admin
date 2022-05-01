@@ -8,12 +8,12 @@ const Login = () => {
     const [password , setUserPass] = useState("")
      const dispatch = useDispatch("")
    
-     const handleClickAdmin = (e)=>{
+     const handleClickAdmin = ()=>{
       
         loginAdmin(dispatch,{nomeUsuario, password})
 
     }
-    const handleClick = (e)=>{
+    const handleClick = ()=>{
       
         loginUser(dispatch,{nomeUsuario, password})
 

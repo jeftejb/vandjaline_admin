@@ -13,7 +13,7 @@ export default function WidgetLg() {
     const getUsers = async ()=> {
      if (user?.isUser){
       try{
-        const res = await userRequest.get("/fatura")
+        const res = await userRequest.get("/fatura/")
           
         setOrders(res.data)
       }catch{}
