@@ -2,7 +2,7 @@ import Sidebar from "./components/sidebar/Sidebar";
 import Topbar from "./components/topbar/Topbar";
 import "./App.css";
 import Home from "./pages/home/Home";
-import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import UserList from "./pages/userList/UserList";
 import User from "./pages/user/User";
 import NewUser from "./pages/newUser/NewUser";
@@ -35,8 +35,6 @@ admin = res
    const  res = JSON?.parse(JSON.parse(localStorage?.getItem("persist:vandja"))?.lojaLogin).currentLoja?.isAdmin;
    admin = res
 }
-}else{
-   admin  = ""
 }
 
 
@@ -45,13 +43,13 @@ admin = res
         <Switch>
        
           {admin ?
-         
+        
           <>
       <Topbar />
       <div className="container">
         <Sidebar />
       
-          <Route exact path="/">
+          <Route  path="/">
             <Home />
           </Route>
          
@@ -104,17 +102,14 @@ admin = res
           <Route path="/site_config">
             <SiteConfig />
           </Route>
-          <Redirect to={"/"}/>
+         
       </div> 
       </>
           :
-          <>
-          <Route exact path="/login">
-          <Login/>
-        </Route>
-        <Redirect to={"/login"}/>
-        </>  
-        }
+        <>
+          <Route path="/login"><Login/></Route>
+        </>
+}
            
       </Switch>
     </Router>
