@@ -8,7 +8,7 @@ import {
         loginUserStart, 
         loginUserSucess,  
        } from "./userRedux"
-import {publicRequest, userRequest} from "../requestMetodos"
+import {publicRequest, userRequest} from "./../requestMetodos"
 
 
 
@@ -18,13 +18,9 @@ import {publicRequest, userRequest} from "../requestMetodos"
 //usuarios ///////////////////////////////
 export const loginAdmin = async (dispatch,user)=>{
     dispatch(loginStart()); 
-
     try{
-
         const res = await publicRequest.post("/autenticacao/login/estabelecimento", user)
         dispatch(loginSucess(res.data))
-        
-   
     }catch(erro){
         dispatch(loginFailer())
     }
@@ -32,12 +28,9 @@ export const loginAdmin = async (dispatch,user)=>{
 
 export const loginUser = async (dispatch,user)=>{
     dispatch(loginUserStart()); 
-
     try{
-
         const res = await publicRequest.post("/autenticacao/login/usuario", user)
         dispatch(loginUserSucess(res.data))
-       
     }catch(erro){
         dispatch(loginUserFailer())
     }
