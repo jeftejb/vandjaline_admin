@@ -6,7 +6,7 @@ import {loginUser, loginAdmin} from "./../../redux/apiCalls"
 const Login = () => {
     const [nomeUsuario , setUserName] = useState("")
     const [password , setUserPass] = useState("")
-    const {isFetching,error} = useSelector((state)=>state?.user)
+    const {error} = useSelector((state)=>state?.user)
      const dispatch = useDispatch("")
      
    
@@ -41,7 +41,7 @@ const Login = () => {
             <input style={{padding:10, marginBottom:20}} type="text" placeholder="Palavra passe" onChange={(e)=>setUserPass(e.target.value)}/>
            
             <button style={{padding:10, width:100 }} onClick={handleClickAdmin}>Login Admin </button>
-            <button style={{padding:10, width:100 }} onClick={handleClick} disabled={isFetching} >Login</button>
+            <button style={{padding:10, width:100 }} onClick={handleClick}  >Login</button>
             {error && <span style={{color:"red"}}>Algo deu errado ...!</span>}
             </form>
 
