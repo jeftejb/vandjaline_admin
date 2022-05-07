@@ -49,7 +49,7 @@ admin = res
       <div className="container">
         <Sidebar />
       
-          <Route  path="/">
+          <Route exact path="/">
             <Home />
           </Route>
          

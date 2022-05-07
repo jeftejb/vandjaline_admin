@@ -13,7 +13,7 @@ if(localStorage.getItem("persist:vandja") !== null ){
 }
 }
 
-const BASE_URL = process.env.REACT_APP_API_URL // "http://localhost:8080/api/"
+const BASE_URL =process.env.REACT_APP_API_URL // 'http://localhost:8080/api/' //  
 
 export const publicRequest = axios.create({
     baseURL:BASE_URL,
