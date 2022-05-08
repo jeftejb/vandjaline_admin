@@ -81,7 +81,7 @@ uploadTask.on('state_changed',
     // Handle successful uploads on complete
     // For instance, get the download URL: https://firebasestorage.googleapis.com/...
     getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-      const produto = {...imput, imagem:downloadURL,loja: loja?.nomeLoja, id_loja:loja?._id, categoria:categorias}
+      const produto = {...imput, imagem:downloadURL,loja: loja?.nomeLoja, id_loja:loja?._id, categoria:categorias,actuacaoLoja:loja?.actuacao}
          novoProduto(produto)
     });
   }
@@ -91,7 +91,7 @@ console.log(file? URL.createObjectURL(file) :"")
     
     
   }else{
-    const produto = {...imput, imagem:"",loja: loja?.nomeLoja, id_loja:loja?._id, categoria:categorias}
+    const produto = {...imput, imagem:"",loja: loja?.nomeLoja, id_loja:loja?._id, categoria:categorias,actuacaoLoja:loja?.actuacao}
          novoProduto(produto)
   }
 

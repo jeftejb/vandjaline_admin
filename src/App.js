@@ -107,7 +107,7 @@ admin = res
       </>
           :
         <>
-          <Route path="/login"><Login/></Route>
+          <Route exact path="/login"><Login/></Route>
         </>
 }
            
