@@ -87,11 +87,11 @@ uploadTask.on('state_changed',
   }
 );
 
-file? URL.createObjectURL(file) :""
+console.log(file? URL.createObjectURL(file) :"")
     
     
   }else{
-    const produto = {...imput, imagem:"",loja: loja?.nomeLoja, id_loja:loja?._id, categoria:categorias,actuacaoLoja:loja?.actuacao}
+    const produto = {...imput, imagem:"",loja: loja?.nomeLoja, id_loja:loja?._id, categoria:categorias, actuacaoLoja:loja?.actuacao}
          novoProduto(produto)
   }
 
