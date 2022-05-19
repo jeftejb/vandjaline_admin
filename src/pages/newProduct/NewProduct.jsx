@@ -46,12 +46,7 @@ export default function NewProduct() {
     const fileName = new Date().getTime()+ file?.name;
     const storage = getStorage(app)
     const storageRef = ref (storage, `filesPro/${fileName}`)
-    const notifica = ()=>{
-      alert("Cadastro feito com sucesso !!")
-    }
-    const refress = ()=>{
-      window.location.reload(false);
-    }
+   
     
   
 
@@ -89,8 +84,7 @@ uploadTask.on('state_changed',
     getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
       const produto = {...imput, imagem:downloadURL,loja: loja?.nomeLoja, id_loja:loja?._id, categoria:categorias, actuacaoLoja:loja?.actuacao}
          novoProduto(produto)
-         notifica()
-         refress()
+        
     });
   }
 );
@@ -101,8 +95,7 @@ console.log(file? URL.createObjectURL(file) :"")
   }else{
     const produto = {...imput, imagem:"",loja: loja?.nomeLoja, id_loja:loja?._id, categoria:categorias, actuacaoLoja:loja?.actuacao}
          novoProduto(produto)
-         notifica()
-         refress()
+        
   }
 
 }
@@ -151,8 +144,8 @@ console.log(file? URL.createObjectURL(file) :"")
           <select name="cor"  onChange={handelchange}>
           <option disabled>Celecione uma cor </option>
             <option value="#fff"    style = {{color:"#fff"}}>   cor selecionada</option>
-            <option value="#C0C0C0" style = {{color:"#C0C0C0"}}>cor selecionada</option>, 
-            <option value="#FF0000" style = {{color:"#FF0000"}}>cor selecionada</option>,
+            <option value="#C0C0C0" style = {{color:"#C0C0C0"}}>cor selecionada</option>
+            <option value="#FF0000" style = {{color:"#FF0000"}}>cor selecionada</option>
             <option value="#FFFF00" style = {{color:"#FFFF00"}}>cor selecionada</option>
             <option value="#00FF00" style = {{color:"#00FF00"}}>cor selecionada</option>
             <option value="#00FFFF" style = {{color:"#00FFFF"}}>cor selecionada</option>

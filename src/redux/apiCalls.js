@@ -86,8 +86,16 @@ export const updateProduto = async (id, produto)=>{
 // novo produto
 
 export const novoProduto = async (produto)=>{
+    const notifica = ()=>{
+        alert("Cadastro feito com sucesso !!")
+      }
+      const refress = ()=>{
+        window.location.reload(false);
+      }
     try{
          await userRequest.post(`/produtos`, produto)
+         notifica()
+         refress()
     }catch(erro){
       
     }
