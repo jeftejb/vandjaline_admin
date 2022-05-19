@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 
-if(localStorage.getItem("persist:vandja") !== null ){
+if(localStorage.getItem("persist:vandja") ){
  if (JSON?.parse(JSON.parse(localStorage.getItem("persist:vandja"))?.user)?.currentUser){
  var TOKENUser  =  JSON?.parse(JSON.parse(localStorage.getItem("persist:vandja"))?.user)?.currentUser?.acessoToken
 }else {

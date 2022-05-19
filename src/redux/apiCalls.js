@@ -93,7 +93,7 @@ export const novoProduto = async (produto)=>{
         window.location.reload(false);
       }
     try{
-         await userRequest.post(`/produtos`, produto)
+         await publicRequest.post(`/produtos`, produto)
          notifica()
          refress()
     }catch(erro){
