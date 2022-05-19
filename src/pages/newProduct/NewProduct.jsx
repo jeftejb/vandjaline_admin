@@ -4,7 +4,7 @@ import { novoProduto } from "../../redux/apiCalls";
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import app from "./../../firebase";
 import { publicRequest } from "../../requestMetodos";
-import { cores } from "../../data";
+//import { cores } from "../../data";
 
 export default function NewProduct() {
   const [progress ,  getProgress] = useState(0)
@@ -19,7 +19,7 @@ export default function NewProduct() {
    useEffect(()=>{
   let inpro = true;
   const getCate = async() =>{
-      const  res  = await publicRequest.get("/categorias");
+      const  res  = await publicRequest.get("/categorias/");
     if(inpro){ 
        getCat(res.data)
       }
@@ -46,7 +46,13 @@ export default function NewProduct() {
     const fileName = new Date().getTime()+ file?.name;
     const storage = getStorage(app)
     const storageRef = ref (storage, `filesPro/${fileName}`)
-
+    const notifica = ()=>{
+      alert("Cadastro feito com sucesso !!")
+    }
+    const refress = ()=>{
+      window.location.reload(false);
+    }
+    
   
 
 // Register three observers:
@@ -81,8 +87,10 @@ uploadTask.on('state_changed',
     // Handle successful uploads on complete
     // For instance, get the download URL: https://firebasestorage.googleapis.com/...
     getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-      const produto = {...imput, imagem:downloadURL,loja: loja?.nomeLoja, id_loja:loja?._id, categoria:categorias,actuacaoLoja:loja?.actuacao}
+      const produto = {...imput, imagem:downloadURL,loja: loja?.nomeLoja, id_loja:loja?._id, categoria:categorias, actuacaoLoja:loja?.actuacao}
          novoProduto(produto)
+         notifica()
+         refress()
     });
   }
 );
@@ -93,6 +101,8 @@ console.log(file? URL.createObjectURL(file) :"")
   }else{
     const produto = {...imput, imagem:"",loja: loja?.nomeLoja, id_loja:loja?._id, categoria:categorias, actuacaoLoja:loja?.actuacao}
          novoProduto(produto)
+         notifica()
+         refress()
   }
 
 }
@@ -138,13 +148,24 @@ console.log(file? URL.createObjectURL(file) :"")
         </div>
         <div className="addProductItem">
           <label>Cor</label>
-          <select name="cor"  onChange={handelchange} multiple>
+          <select name="cor"  onChange={handelchange}>
           <option disabled>Celecione uma cor </option>
-            <option   value="yellow" style={{color : "yellow"}}>Amarelo</option>
-            <option   value="blue"style={{color : "blue"}}>Azul</option>
-            <option   value="black"style={{color : "black"}}>Preto</option>
-            <option   value="orange"style={{color : "orange"}}>Laranja</option>
-            <option   value="green"style={{color : "green"}}>Verde</option>
+            <option value="#fff"    style = {{color:"#fff"}}>   cor selecionada</option>
+            <option value="#C0C0C0" style = {{color:"#C0C0C0"}}>cor selecionada</option>, 
+            <option value="#FF0000" style = {{color:"#FF0000"}}>cor selecionada</option>,
+            <option value="#FFFF00" style = {{color:"#FFFF00"}}>cor selecionada</option>
+            <option value="#00FF00" style = {{color:"#00FF00"}}>cor selecionada</option>
+            <option value="#00FFFF" style = {{color:"#00FFFF"}}>cor selecionada</option>
+            <option value="#0000FF" style = {{color:"#0000FF"}}>cor selecionada</option>
+            <option value="#FF00FF" style = {{color:"#FF00FF"}}>cor selecionada</option>
+            <option value="#000000" style = {{color:"#000000"}}>cor selecionada</option>
+            <option value="#808080" style = {{color:"#808080"}}>cor selecionada</option>
+            <option value="#800000" style = {{color:"#800000"}}>cor selecionada</option>
+            <option value="#808000" style = {{color:"#808000"}}>cor selecionada</option>
+            <option value="#008000" style = {{color:"#008000"}}>cor selecionada</option>
+            <option value="#008080" style = {{color:"#008080"}}>cor selecionada</option>
+            <option value="#000080" style = {{color:"#000080"}}>cor selecionada</option>
+            <option value="#800080" style = {{color:"#800080"}}>cor selecionada</option>
           </select>
         </div>
         <div className="addProductItem">
