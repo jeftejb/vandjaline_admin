@@ -13,7 +13,7 @@ export default function NewProduct() {
   const [categorias, setCategorias] = useState([])
   const [cat , getCat] = useState();
  
-  console.log(cores[0])
+
   const loja =  JSON?.parse(JSON.parse(localStorage.getItem("persist:vandja"))?.lojaLogin).currentLoja;
    
    useEffect(()=>{
@@ -87,7 +87,7 @@ uploadTask.on('state_changed',
   }
 );
 
-console.log(file? URL.createObjectURL(file) :"")
+file? URL.createObjectURL(file) :""
     
     
   }else{
@@ -138,7 +138,7 @@ console.log(file? URL.createObjectURL(file) :"")
         </div>
         <div className="addProductItem">
           <label>Cor</label>
-          <select name="cor"  onChange={handelchange}>
+          <select name="cor"  onChange={handelchange} multiple>
           <option disabled>Celecione uma cor </option>
             <option   value="yellow" style={{color : "yellow"}}>Amarelo</option>
             <option   value="blue"style={{color : "blue"}}>Azul</option>
@@ -167,7 +167,7 @@ console.log(file? URL.createObjectURL(file) :"")
         </div>
         <div className="addProductItem radio">
           <label>Etatus</label>
-          <div>  <label>Activo</label> <input  name="activar" type="radio"  id=""  value="true" onChange={handelchange} /></div>
+          <div>  <label>Activo</label> <input  name="activo" type="radio"  id=""  value="true" onChange={handelchange} /></div>
         </div>
         <div className="addProductItem">
           <label>Nome do Estabelecomento</label>
