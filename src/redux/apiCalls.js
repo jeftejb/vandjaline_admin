@@ -87,7 +87,7 @@ export const updateProduto = async (id, produto)=>{
 
 export const novoProduto = async (produto)=>{
     try{
-         await userRequest.post(`/produtos/`, produto)
+         await userRequest.post(`/produtos`, produto)
     }catch(erro){
       
     }
@@ -133,7 +133,7 @@ export const updateEstabelecimento = async (id, dados)=>{
 export const novoEstabelecimento = async (estabelecimento)=>{
 
     try{
-         await userRequest.post(`/estabelecimento/`,estabelecimento)
+         await userRequest.post(`/estabelecimento`,estabelecimento)
         
        
     }catch(erro){
