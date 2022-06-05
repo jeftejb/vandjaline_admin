@@ -2,6 +2,7 @@ import {
      loginFailer, 
      loginStart, 
      loginSucess,  
+     logaut
     } from "./lojaLoginRedux"
     import {
         loginUserFailer, 
@@ -15,12 +16,20 @@ import {publicRequest, userRequest} from "./../requestMetodos"
 
 
 
+const reload = ()=>{
+    window.location.reload();
+  } 
+  
+  
+
 //usuarios ///////////////////////////////
 export const loginAdmin = async (dispatch,user)=>{
     dispatch(loginStart()); 
     try{
         const res = await publicRequest.post("/autenticacao/login/estabelecimento", user)
         dispatch(loginSucess(res.data))
+
+        reload();
     }catch(erro){
         dispatch(loginFailer())
     }
@@ -31,9 +40,20 @@ export const loginUser = async (dispatch,user)=>{
     try{
         const res = await publicRequest.post("/autenticacao/login/usuario", user)
         dispatch(loginUserSucess(res.data))
+
+        reload();
     }catch(erro){
         dispatch(loginUserFailer())
     }
+}
+
+export const Logaut = async (dispatch)=>{
+   await  dispatch(
+       logaut()
+       )
+
+
+
 }
 
 //Busacr todos 
@@ -172,4 +192,28 @@ export const imgNova = async (dados)=>{
 
 
 
+//pesquisa emial estabelecimento 
 
+export const pacoteAc = async (valor, pacote, id, statuPagamento)=>{
+const dados = {plano:pacote, pagamento: Number(valor) , estatuPagamento: statuPagamento } 
+    try{
+      await publicRequest.put("/estabelecimento/update/pacote/"+id, dados)
+       
+    }catch(error){
+        console.log(error)
+    }
+
+}
+
+
+
+/// desativar multiplos produtos da loja 
+
+export const updateProdutoDesativar = async (id, produto)=>{
+  
+    try{
+      await userRequest.put(`/produtos/desativar/produtos/loja/${id}`, produto)
+    }catch(erro){
+       
+    }
+}

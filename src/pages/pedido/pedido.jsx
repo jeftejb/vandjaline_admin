@@ -8,6 +8,7 @@ export default function Pedido() {
    const location = useLocation()
    const id = location.pathname.split("/")[2]
    //const produtos = Orders.produtos
+   const loja = JSON.parse(JSON.parse(localStorage.getItem("persist:vandja"))?.lojaLogin)?.currentLoja
  
   useEffect(() => {
     const statu = {estatos:"Visto"} 
@@ -90,7 +91,7 @@ export default function Pedido() {
           <td className="widgetLgAmount">{Number(fatura?.preco).toFixed(2)}</td>
           <td className="widgetLgAmount"> <Button  type={fatura?.estatus} /> </td>
           <td className="widgetLgAmount">
-          <button onClick={()=>handelClickAceitarPedido({cod:fatura.codInter,id:fatura._id })}>Aceitar pedido</button>
+         {loja.ativo === true ? <button onClick={()=>handelClickAceitarPedido({cod:fatura.codInter,id:fatura._id })}>Aceitar pedido</button> :""}
           </td>
          
         </tr>

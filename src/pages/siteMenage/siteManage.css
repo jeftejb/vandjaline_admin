@@ -152,3 +152,14 @@
   color: white;
   font-weight: 600;
 }
+
+
+.containerComentarios{
+  padding: 10px;
+}
+
+.comentario{
+  font-size: 12px;
+  size: 15px;
+  font-weight: bolder;
+}

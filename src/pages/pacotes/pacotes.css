@@ -1,0 +1,135 @@
+.containerInicio{
+
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 50px;
+   
+
+}
+
+.containerPacotesInicio{
+  
+    
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    justify-content:space-between;
+    padding: 10px;
+  
+    
+}
+
+
+.pacoteInicio{
+ background-color: #7392B7;
+ flex: 1;
+ padding: 10px;
+ margin: 10px;
+ box-shadow: 20px 15px 15px black;
+ justify-content: center;
+flex-direction: column;
+align-items: center;
+ display: flex;
+}
+
+.containerImagemInicio{
+    width: 280px;
+    height: 200px;
+    margin: 10px;
+    position: relative;
+   
+}
+
+.imgInicio {
+width: 100%;
+height: 150px;
+
+}
+
+.containerInfoInicio{
+    margin-top: 45px;
+    margin-bottom: 45px;
+    flex-direction: column;
+    display: flex;
+    padding: 10px;
+    text-align: left;
+}
+
+.tituloInicio{
+    margin-bottom: 12px;
+    font-size: 18px;
+    size: 15px;
+    text-align: center;
+    
+}
+
+.precoInicio{
+    margin-bottom: 12px;
+    font-size: 15px;
+    size: 15px;
+    text-align: center;
+    justify-content: center;
+}
+
+
+.descricaoInicio{
+  
+    font-size: 12px;
+    size: 15px;
+    margin-bottom: 10px;
+}
+
+.descricaoInicio>h4{
+    margin-top: 10px;
+}
+.descricaoInicio>ul{
+    margin-top: 10px;
+}
+
+
+
+.butaoInicio{
+    padding: 15px 50px;
+    border-radius: 15px;
+    margin-bottom: 18px;
+    background-color: rgb(241, 159, 7);
+    list-style: none;
+    text-decoration: none;
+    color:black;
+    border: 2px solid #000;
+    
+}
+
+.infInicio{
+    padding: 10px;
+    margin: 20px;
+    font-size: 12px;
+    size: 15px;
+}
+
+
+.circuloInicio{
+   
+    top: 0px;
+    width: 100px;
+    height: 80px;
+    border: solid orange;
+    border-radius: 50%;
+    display: flex;
+
+    justify-content: center;
+  
+}
+
+.circuloInicio>h5{
+    margin-top: 30px;
+    margin-left: 5px;
+}
+
+.nomeLojaInicio{
+    margin-left: 25px;
+    font-size: 15px;
+    size: 50px;
+}

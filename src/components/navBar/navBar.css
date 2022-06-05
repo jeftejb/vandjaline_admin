@@ -1,0 +1,56 @@
+
+  
+  .textNav{
+  text-decoration:none;
+  color: #042940;
+  }
+
+.ContainerNav {
+  display: flex;
+height:150px;
+margin-top: 0px ;
+margin-bottom:30px ;
+background-color:#759EB8 ;
+align-items: center;
+justify-content: center;
+
+}
+
+.wrapperNav{
+
+  padding:  10px 20px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+}
+
+
+.CenterrNav {
+  flex: 1;
+display: flex;
+flex-wrap: wrap;
+align-items: center;
+justify-content: center;
+
+
+
+}
+/*
+const Logo = styled.h1`
+font-weight: bold;
+font-size:20px;
+padding:0px 8px;
+${mobile({ fontSize: "5px" })}
+${tablet({ fontSize: "17px"})}
+`
+*/
+
+
+
+.MenuItemNav {
+font-size: 14px;
+cursor: pointer;
+margin-left: 15px;
+margin-bottom: 15px;
+}
+

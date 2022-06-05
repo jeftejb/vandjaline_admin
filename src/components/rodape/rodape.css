@@ -1,0 +1,104 @@
+.ContainerRodape {
+flex: 1;
+display: flex;
+background-color:#759EB8 ;
+flex-wrap: wrap;
+
+}
+
+.link{
+font-style: none;
+list-style: none;
+}
+
+.LinkRodape {
+color:#fff;
+}
+
+
+.LeftRodape {
+flex: 1;
+display: flex;
+flex-direction: column;
+padding: 20px;
+color:#fff;
+}
+
+.LogoRodape {
+size:20;
+font-size:15px;
+}
+
+.DescRodape{
+margin:15px 0px;
+font-size: 12px;
+}
+
+.SocialContainerRodape{
+display: flex;
+}
+
+.SocialIconRodape {
+width: 25px;
+height: 25px;
+border-radius: 50%;
+color:#fff;
+display: flex;
+align-items: center;
+justify-content: center;
+margin-right: 25px;
+}
+
+.CenterRodape{
+flex:1;
+padding: 10px;
+color:#fff;
+display: flex;
+flex-direction: column;
+}
+
+
+.TituloRodape {
+size:20 ;
+font-size:15px ;
+margin-bottom: 30px;
+color:#fff;
+}
+
+.ListRodape {
+margin:0;
+padding: 0;
+list-style: none;
+display: flex;
+flex-wrap: wrap;
+}
+
+.ListItemRodape {
+width: 50%;
+margin-bottom: 10px;
+font-size:12px;
+}
+
+.RightRodape{
+display: flex;
+flex: 1;
+padding: 15px;
+color:#fff;
+flex-direction: column;
+}
+
+.ContatoItemRodape{
+margin-bottom: 5px;
+display: flex;
+align-items: center;
+color:#fff;
+font-size:12px ;
+}
+.PagamentoRodape{
+    width: 30%;
+}
+
+
+
+
+

@@ -112,6 +112,8 @@ export default function ProductList() {
       renderCell: (params) => {
         return (
           <>
+           {loja?.ativo === true ?
+           <>
             <Link to={"/product/" + params.row?._id}>
               <button className="productListEdit">Editar</button>
             </Link>
@@ -119,7 +121,10 @@ export default function ProductList() {
               className="productListDelete"
               onClick={() => handleDelete(params.row?._id)}
             />
+            </>
+            :""}
           </>
+         
         );
       },
     },

@@ -1,21 +1,21 @@
 import React from "react"
 import { useState } from "react"
 import {useDispatch, useSelector} from "react-redux"
-import { loginAdmin} from "./../../redux/apiCalls"
+import {loginUser} from "./../../redux/apiCalls"
 
-const Login = () => {
+const Loginadmin = () => {
+   
     const [nomeUsuario , setUserName] = useState("")
     const [password , setUserPass] = useState("")
     const {error} = useSelector((state)=>state?.user)
      const dispatch = useDispatch("")
      
    
-     const handleClickAdmin = (e)=>{
+  
+    const handleClick = (e)=>{
         e.preventDefault()
-        loginAdmin(dispatch,{nomeUsuario, password})
-
+           loginUser(dispatch,{nomeUsuario, password})
     }
-   
     return (
         <div style = {{
             display:"flex",
@@ -49,13 +49,12 @@ const Login = () => {
                          justifyContent:"center"
                      }
                  }>
-                     <h2 style={{marginTop:"0px", marginBottom:"25px"}}>Login Admin</h2>
+                     <h2 style={{marginTop:"0px", marginBottom:"25px"}}>Login User</h2>
             <input style={{padding:10, marginBottom:20}} type="texe" placeholder="Email" onChange = {(e)=>setUserName(e.target.value)}/>
             <input style={{padding:10, marginBottom:20}} type="text" placeholder="Palavra passe" onChange={(e)=>setUserPass(e.target.value)}/>
            
-            <button style={{padding:10, width:100 }} onClick={handleClickAdmin}>Login Admin </button>
-          
-            {error && <span style={{color:"red"}}>Nome ou password incorretos ...!</span>}
+            <button style={{padding:10, width:100 }} onClick={handleClick}  >Login</button>
+            {error && <span style={{color:"red"}}>Algo deu errado ...!</span>}
             </form>
 
         </div>
@@ -63,4 +62,4 @@ const Login = () => {
     )
 }
 
-export default Login
+export default Loginadmin

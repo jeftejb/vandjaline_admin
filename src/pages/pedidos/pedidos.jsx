@@ -148,9 +148,13 @@ export default function Pedidos() {
           </td>
           
           <td>
+            {loja?.ativo === true ?
+            <>
             <button onClick={()=>handelClickDelete(fatura?._id)}>Negar</button>
             <button onClick={()=>handelClickAprovar(fatura?._id)}>Aprovar</button>
-            
+            </>
+            :""
+            }
             
           </td>
          

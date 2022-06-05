@@ -78,6 +78,13 @@ export default function Estabelecimento() {
               <span className="userShowInfoTitle">{dados?.municipioLoja}</span>
               <span className="userShowInfoTitle">{dados?.enderecoLoja}</span>
             </div>
+
+            <div className="userShowInfo">
+              <LocationSearching className="userShowIcon" />
+              <span className="userShowInfoTitle">{dados?.estatuPagamento}</span>
+              <span className="userShowInfoTitle">{dados?.plano}</span>
+              <span className="userShowInfoTitle">{dados?.pagamento}</span>
+            </div>
           </div>
         </div>
         <div className="userUpdate">

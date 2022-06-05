@@ -3,7 +3,7 @@ import { DataGrid } from "@material-ui/data-grid";
 import { Check, DeleteOutline, Clear } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import {  deleteEstabelecimento, updateEstabelecimento} from "../../redux/apiCalls";
+import {  deleteEstabelecimento, updateEstabelecimento,  updateProdutoDesativar} from "../../redux/apiCalls";
 
 import { publicRequest} from "../../requestMetodos";
 
@@ -34,15 +34,42 @@ return ()=> inpro = false;
   };
 
   const handelActive = (id) => {
-    const dados = {ativo:false}
+    
+    const desativarLoja = ()=> {
+      const dados = {ativo:false}
     updateEstabelecimento(id,dados)
+    }
+    const desativarProdutos = ()=>{
+      const dados = {activo:false}
+      updateProdutoDesativar(id, dados)
+    }
+     desativarLoja()
+     desativarProdutos()
+
     };
 
     const handelDesative = (id) => {
-      const dados = {ativo:true}
+      const ativarLoja = ()=> {
+        const dados = {ativo:true}
       updateEstabelecimento(id,dados)
+      }
+      const ativarProdutos = ()=>{
+        const dados = {activo:true}
+        updateProdutoDesativar(id, dados)
+      }
+       ativarLoja()
+       ativarProdutos()
       };
-  
+
+      const handelActivePagamento = (id) => {
+        const dados = {estatuPagamento:"Cancelado"}
+        updateEstabelecimento(id,dados)
+        };
+    
+        const handelDesativePagamento = (id) => {
+          const dados = {estatuPagamento:"Aceite"}
+          updateEstabelecimento(id,dados)
+          };
   
   const columns = [
     { field: "_id", headerName: "ID", width: 90 },
@@ -69,6 +96,18 @@ return ()=> inpro = false;
         return (
           <div className="userListUser">
            {params.row?.ativo === true ? <Check onClick={()=>handelActive(params.row?._id)} /> :<Clear onClick={()=>handelDesative(params.row?._id)}/> }
+          </div>
+        );
+      },
+    },
+    {
+      field: "estatuPagamento",
+      headerName: "Pagamento",
+      width: 100,
+      renderCell: (params) => {
+        return (
+          <div className="userListUser">
+           {params.row?.estatuPagamento === "Aceite" ? <Check onClick={()=>handelActivePagamento(params.row?._id)} /> :<Clear onClick={()=>handelDesativePagamento(params.row?._id)}/> }
           </div>
         );
       },

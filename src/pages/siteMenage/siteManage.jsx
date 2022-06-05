@@ -3,15 +3,18 @@ import {
   CalendarToday,
   LocationSearching,
   MailOutline,
+  Money,
   PermIdentity,
   PhoneAndroid,
   Publish,
+  ViewAgenda,
 } from "@material-ui/icons";
 import { useEffect, useState } from "react";
 import { Link} from "react-router-dom";
 import { userRequest } from "../../requestMetodos";
 import SiteInput from "../../components/InputSite/InputSite";
-import {updateEstabelecimento} from"./../../redux/apiCalls"
+import {updateEstabelecimento} from"./../../redux/apiCalls";
+import copy from "copy-to-clipboard"
 import dotenv from "dotenv"
 
 dotenv.config();
@@ -21,6 +24,8 @@ export default function SiteManage() {
   const [dados , getDados] = useState()
   const [imput, setImput] = useState();
   const loja = JSON?.parse(JSON.parse(localStorage.getItem("persist:vandja")).lojaLogin)?.currentLoja
+
+  const dinheiro = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'AKZ' })
 
     useEffect(() =>{
 
@@ -47,6 +52,23 @@ export default function SiteManage() {
 updateEstabelecimento(loja._id, imput)
   }
     
+
+  const funcaoCopiar = ()=>{
+    const copiar  = ()=>{
+      const url  = process.env.REACT_APP_SITE_LINK+"/estabelecimento/"+loja?._id
+      copy(url)
+    }
+      const aviso = ()=>{
+        alert("Link copiado com sucesso")
+      }
+    
+      copiar ();
+      aviso();
+      
+    
+    }
+
+
   return (
     loja ? 
     
@@ -72,6 +94,14 @@ updateEstabelecimento(loja._id, imput)
             <div className="userShowInfo">
               <PermIdentity className="userShowIcon" />
               <span className="userShowInfoTitle">{loja?.nomeLoja}</span>
+              </div>
+              <div className="userShowInfo">
+                <ViewAgenda className="userShowIcon"/>
+              <span className="userShowInfoTitle">{loja?.plano}</span>
+              </div>
+              <div className="userShowInfo">
+                <Money className="userShowIcon"/>
+              <span className="userShowInfoTitle">{dinheiro.format(loja?.pagamento)}</span>
             </div>
             
             <span className="userShowTitle">Conta</span>
@@ -89,7 +119,7 @@ updateEstabelecimento(loja._id, imput)
             </div>
             <div className="userShowInfo">
               <LocationSearching className="userShowIcon" />
-              <span className="userShowInfoTitle">Link para partilhar : {process.env.REACT_APP_SITE_LINK}/estabelecimento/{loja?._id}</span>
+              <span className="userShowInfoTitle">Partilha o seu negocio :<button onClick={funcaoCopiar}>Convidar Amigos</button> </span>
             </div>
           </div>
         </div>
@@ -148,8 +178,58 @@ updateEstabelecimento(loja._id, imput)
             </div>
           </form>
         </div>
+
+   
       </div>
+
+      <div className="containerComentarios">
+
+      { loja.estatuPagamento === "Pendente" ? 
      
+      <>
+      <span className="comentario"> 
+        Foi feita uma solicitação de pagamento de um pacote por esta conta, por favor agrarde a verificação da solicitação feita.<br/>
+
+        Vamos verificar se realmente o pedido foi feito, e tambem verificar se o pagamento foi realizado, esta verificação pode demorar entre 24h a 72h. 
+        
+          </span>
+        </>
+         :
+         loja?.estatuPagamento === "Nem_um" ? 
+         <span className="comentario">
+           Por favor adquira um dos nossos pacotes para poder desbloquear a sua conta.<br/>
+
+           obs: Podes escolher o pacote grátis para textar todos os serviços da plataforma por um mês a custo 0.
+         </span> : loja?.estatuPagamento === "Aceite" ? 
+         <span className="comentario">
+             A sua solicitação foi aceite com sucesso !!.<br/>
+
+             ja podes usufluir dos serviços do Vandjaline.<br/>
+
+             plano escolhido: {loja?.plano} <br/>
+
+             {loja?.plano === "gratis"? 
+            <span className="comentario">
+              O plano grátis tem uma duracao de 1 mês e so pode ser utilizado uma vez !
+            </span>
+            
+            :
+            <span className="comentario"></span>
+            }
+
+
+         </span>
+         :
+         loja?.estatuPagamento === "Canselado" ? 
+         <span className="comentario">
+           O periodo de pagamento do seu plano axpirou por favor faça a renovação para poder continuar a utilzar a plataforma.
+         </span>
+         :"" 
+
+        
+  }
+
+</div>
     </div>
 
     :  <div className="user">

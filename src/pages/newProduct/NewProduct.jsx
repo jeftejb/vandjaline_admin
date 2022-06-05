@@ -191,7 +191,8 @@ console.log(file? URL.createObjectURL(file) :"")
           <label>Tipo</label>
           <input name="actuacaoLoja"  type="text" placeholder="Estabelecimento" value={loja?.actuacao} disabled  />
         </div>
-        <button onClick={handelClick} className="addProductButton">Criar</button>
+       {loja.ativo === true? <button onClick={handelClick} className="addProductButton">Criar</button> : ""}
+       
       </form>
     </div>
   );
