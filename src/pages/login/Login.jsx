@@ -2,17 +2,27 @@ import React from "react"
 import { useState } from "react"
 import {useDispatch, useSelector} from "react-redux"
 import { loginAdmin} from "./../../redux/apiCalls"
+import "./../../App.css"
 
 const Login = () => {
     const [nomeUsuario , setUserName] = useState("")
     const [password , setUserPass] = useState("")
-    const {error} = useSelector((state)=>state?.user)
+    const {error} = useSelector((state)=>state?.lojaLogin)
+    const [loading, setLoading] = useState();
      const dispatch = useDispatch("")
      
    
-     const handleClickAdmin = (e)=>{
+     const handleClickAdmin = async (e)=>{
         e.preventDefault()
-        loginAdmin(dispatch,{nomeUsuario, password})
+        setLoading(true)
+        try{
+         
+            await loginAdmin(dispatch,{nomeUsuario, password})
+            setLoading(false)
+        }catch{
+          setLoading(false)
+        }
+       
 
     }
    
@@ -53,7 +63,13 @@ const Login = () => {
             <input style={{padding:10, marginBottom:20}} type="texe" placeholder="Email" onChange = {(e)=>setUserName(e.target.value)}/>
             <input style={{padding:10, marginBottom:20}} type="text" placeholder="Palavra passe" onChange={(e)=>setUserPass(e.target.value)}/>
            
-            <button style={{padding:10, width:100 }} onClick={handleClickAdmin}>Login Admin </button>
+            <button style={{padding:10, width:100 }} disabled={loading} onClick={handleClickAdmin}>Login Admin </button>
+
+            {loading && 
+<div className="loading">
+ <span>Processo</span>
+</div>
+}
           
             {error && <span style={{color:"red"}}>Nome ou password incorretos ...!</span>}
             </form>
