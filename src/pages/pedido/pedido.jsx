@@ -39,7 +39,7 @@ export default function Pedido() {
 
   const handelClickAceitarPedido = (cod)=>{
   
-    const dados = {pontos :10, produtosVendidos:1}
+    const dados = {pontos :150, produtosVendidos:1}
     const statu = {estatus:"Aprovado", id:cod.id} 
     const _id = Orders[0]?._id
     const idUsu = Orders[0]?.id_usuario
@@ -91,7 +91,7 @@ export default function Pedido() {
           <td className="widgetLgAmount">{Number(fatura?.preco).toFixed(2)}</td>
           <td className="widgetLgAmount"> <Button  type={fatura?.estatus} /> </td>
           <td className="widgetLgAmount">
-         {loja.ativo === true ? <button onClick={()=>handelClickAceitarPedido({cod:fatura.codInter,id:fatura._id })}>Aceitar pedido</button> :""}
+         {loja?.ativo === true ? <button onClick={()=>handelClickAceitarPedido({cod:fatura.codInter,id:fatura._id })}>Aceitar pedido</button> :""}
           </td>
          
         </tr>

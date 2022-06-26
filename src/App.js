@@ -15,8 +15,10 @@ import NewProduct from "./pages/newProduct/NewProduct";
 import Login from "./pages/login/Login";
 import LoginAdmin from "./pages/loginAdmin/Loginadmin";
 import Pedidos from "./pages/pedidos/pedidos";
+import HistoricoPedidos from "./pages/pedidos/historicoPedidos";
 import Pedido from "./pages/pedido/pedido";
 import Pagamentos from "./pages/pagamentos/pagamentos";
+import PagamentosHistorico from "./pages/pagamentos/historicoPagamentos";
 import Categoria from "./pages/categoria/Categoria";
 import Categorias from "./pages/categorias/Categorias";
 import NovaCategoria from "./pages/novaCategoria/novaCategoria";
@@ -71,6 +73,9 @@ const usuarioAdmin  = JSON?.parse(JSON.parse(localStorage?.getItem("persist:vand
           <Route path="/pedidos">
             <Pedidos/>
           </Route>
+          <Route path="/pedidoshistorico">
+            <HistoricoPedidos/>
+          </Route>
           <Route path="/pedido/:id">
             <Pedido />
           </Route>
@@ -79,6 +84,9 @@ const usuarioAdmin  = JSON?.parse(JSON.parse(localStorage?.getItem("persist:vand
             <>
           <Route path="/pagamentos">
             <Pagamentos />
+          </Route>
+          <Route path="/historico">
+            <PagamentosHistorico />
           </Route>
           <Route path="/users">
             <UserList />
