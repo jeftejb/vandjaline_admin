@@ -60,7 +60,7 @@ const Login = () => {
                      }
                  }>
                      <h2 style={{marginTop:"0px", marginBottom:"25px"}}>Login Admin</h2>
-            <input style={{padding:10, marginBottom:20}} type="texe" placeholder="Email" onChange = {(e)=>setUserName(e.target.value)}/>
+            <input style={{padding:10, marginBottom:20}} type="text" placeholder="Email" onChange = {(e)=>setUserName(e.target.value)}/>
             <input style={{padding:10, marginBottom:20}} type="password" placeholder="Palavra passe" onChange={(e)=>setUserPass(e.target.value)}/>
            
             <button style={{padding:10, width:100 }} disabled={loading} onClick={handleClickAdmin}>Login Admin </button>
