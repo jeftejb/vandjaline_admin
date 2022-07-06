@@ -50,8 +50,8 @@ const Loginadmin = () => {
                      }
                  }>
                      <h2 style={{marginTop:"0px", marginBottom:"25px"}}>Login User</h2>
-            <input style={{padding:10, marginBottom:20}} type="texe" placeholder="Email" onChange = {(e)=>setUserName(e.target.value)}/>
-            <input style={{padding:10, marginBottom:20}} type="text" placeholder="Palavra passe" onChange={(e)=>setUserPass(e.target.value)}/>
+            <input style={{padding:10, marginBottom:20}} type="text" placeholder="Email" onChange = {(e)=>setUserName(e.target.value)}/>
+            <input style={{padding:10, marginBottom:20}} type="password" placeholder="Palavra passe" onChange={(e)=>setUserPass(e.target.value)}/>
            
             <button style={{padding:10, width:100 }} onClick={handleClick}  >Login</button>
             {error && <span style={{color:"red"}}>Algo deu errado ...!</span>}
