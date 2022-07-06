@@ -54,7 +54,7 @@ import { Link } from "react-router-dom";
                 </div>
                 <div className="containerInfoInicio">
                     <h3 className="tituloInicio"> Pacote facilíta </h3>
-                    <span className="precoInicio">kz 3.720,00/ Mês</span>
+                    <span className="precoInicio">Indisponivel</span>
                     <span className="descricaoInicio">
                     Este pacote permite ao usuário efectuar tarefas  simples como cadastrar produtos,  editar e eliminar produtos , ou seja terá acesso a área de administração de produtos  e ao serviço de afiliados sem contar com o serviço de pagamentos online .   
                     <h4>Serviços disponíveis </h4> 
@@ -75,7 +75,7 @@ import { Link } from "react-router-dom";
                 </div>
                 <div className="containerInfoInicio">
                     <h3 className="tituloInicio">Pacote  completo</h3>
-                    <span className="precoInicio">kz 7.550,00/ Mês </span>
+                    <span className="precoInicio">Indisponivel </span>
                     <span className="descricaoInicio">
                     Este pacote permite ao usuário utilizar todos so serviços disponíveis na plataforma 
                    

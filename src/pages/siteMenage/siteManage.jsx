@@ -158,6 +158,16 @@ updateEstabelecimento(loja._id, imput)
                 />
               </div>
               <div className="userUpdateItem">
+                <label>Horario de Funcionamento</label>
+                <input
+                  type="text"
+                  placeholder="Horario de funcionamento"
+                  className="userUpdateInput"
+                  name="funcionamento"
+                  onChange={handelChange }
+                />
+              </div>
+              <div className="userUpdateItem">
                 <label>Link de pagamento Kamba</label>
                 <input
                   type="text"
@@ -167,6 +177,7 @@ updateEstabelecimento(loja._id, imput)
                   onChange={handelChange }
                 />
               </div>
+              
              
               <span>A carteira digital "Kamba" é um aplicativo inovador 100% angolano que permite efectuar varios tipos de operações na internet como pagamentos transferencias e outros, link para fazer o download: <a href={process.env.REACT_APP_SITE_LINK_KAMBA}> Clique aqui para baixar o App</a> </span>
 
