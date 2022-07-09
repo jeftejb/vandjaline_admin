@@ -20,7 +20,7 @@ import { Link } from "react-router-dom";
         <NavBar/>
 
         <div className="containerInicio">
-            <span className="infInicio">O vandjaline possui pacotes acessíveis para o serviço de divulgação de produtos e serviços  da sua empresa, escolha um dos pacotes a baixo e comece a comesse a expandir os teus negócios !!  </span>
+            <span className="infInicio">O vandjaline possui pacotes acessíveis para o serviço de divulgação de produtos e venda online, escolha um dos pacotes a baixo e comece a expandir os seus negócios !!  </span>
             <div className="containerPacotesInicio">
             <div className="pacoteInicio">
                 <div className="circuloInicio"><h5 style={{color:"#40e45b"}} >Disponivel</h5> </div>
