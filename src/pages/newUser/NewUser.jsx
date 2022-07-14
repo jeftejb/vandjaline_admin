@@ -2,6 +2,7 @@ import "./newUser.css";
 
 export default function NewUser() {
   return (
+    <>
     <div className="newUser">
       <h1 className="newUserTitle">Novo Usuario</h1>
       <form className="newUserForm">
@@ -48,5 +49,6 @@ export default function NewUser() {
         <button className="newUserButton">Criar</button>
       </form>
     </div>
+    </>
   );
 }

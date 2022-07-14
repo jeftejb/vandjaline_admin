@@ -42,3 +42,44 @@
     margin-right: 5px;
     font-size: 20px !important;
 }
+
+
+.botaoSair{
+  margin-top: 25px;
+  margin-left: 15px;
+  padding: 5px 20px;
+  border-radius: 5px;
+  background-color:rgba(255, 94, 0, 0.596);
+}
+.Hamburger{
+  display: none;
+}
+
+
+
+
+@media only screen and (max-width: 749px) {
+  
+  .sidebar {
+    
+   
+    flex: 1;
+    height: calc(100vh - 50px);
+    background-color: rgb(251, 251, 255);
+    position: fixed;
+    top: 50px;
+    transform: translateX(-100%);
+    transition: 0.3s;
+    z-index: 200;
+  }
+  
+
+  
+  .menu-open {
+    transform: translateX(0%);
+  }
+  .Hamburger{
+    display: flex;
+    margin-left: 5px;
+  }
+}

@@ -1,4 +1,5 @@
 import "./sidebar.css";
+import React, { useState } from 'react';
 import {
   LineStyle,
   Timeline,
@@ -7,18 +8,42 @@ import {
   Storefront,
   AttachMoney,
   BarChart,
-  MailOutline,
-  DynamicFeed,
-  ChatBubbleOutline,
+  //MailOutline,
+  //DynamicFeed,
+  //ChatBubbleOutline,
   WorkOutline,
-  Report,
+  //Report,
+  Menu
 } from "@material-ui/icons";
 import { Link } from "react-router-dom";
+import { Logaut } from "../../redux/apiCalls";
+import { logautUser } from "../../redux/userRedux";
+import {useDispatch} from "react-redux";
+import { ReactDimmer } from "react-dimmer";
 
 export default function Sidebar() {
+  const dispatch = useDispatch() 
   const user = JSON?.parse(JSON.parse(localStorage.getItem("persist:vandja"))?.user).currentUser?.isUser;
+  const [isMenuOpen, setMenu] = useState(false);
+
+  const handleMenu = () => {
+    setMenu((prevState) => !prevState);
+  };
+  
+  const handleclikLogAutuser = (e)=>{
+    dispatch(logautUser())
+ }
+ 
+
+  const handleclik = (e)=>{
+   
+    Logaut(dispatch)
+  
+  }
   return (
-    <div className="sidebar">
+    <>
+    <div className="Hamburger"><Menu className="Hamburger" onClick={handleMenu}></Menu> </div>
+    <div className={`sidebar  ${isMenuOpen ? "menu-open" : ""} `}>
       <div className="sidebarWrapper">
         <div className="sidebarMenu">
           <h3 className="sidebarTitle">Menu</h3>
@@ -57,7 +82,7 @@ export default function Sidebar() {
             <Link to="/pedidos" className="link">
             <li className="sidebarListItem">
               <AttachMoney className="sidebarIcon" />
-              Transferencias
+              Pedidos
             </li>
             </Link>
             {user? 
@@ -95,6 +120,7 @@ export default function Sidebar() {
             </li>
           </ul>
         </div>
+        {/*
         <div className="sidebarMenu">
           <h3 className="sidebarTitle">Notificacoes</h3>
           <ul className="sidebarList">
@@ -112,6 +138,7 @@ export default function Sidebar() {
             </li>
           </ul>
         </div>
+        */}
         <div className="sidebarMenu">
           <h3 className="sidebarTitle">Configurações</h3>
           <ul className="sidebarList">
@@ -121,6 +148,7 @@ export default function Sidebar() {
               Site config
             </li>
             </Link>
+            {/*
             <li className="sidebarListItem">
               <Timeline className="sidebarIcon" />
               Analytics
@@ -129,9 +157,21 @@ export default function Sidebar() {
               <Report className="sidebarIcon" />
               Reports
             </li>
+            */}
+              <li className="sidebarListItem">
+            <form>{user? <button className="botaoSair topbarIconContainer" onClick={handleclikLogAutuser}>Sair da conta</button>:<button className="botaoSair topbarIconContainer" onClick={handleclik}>Sair da conta</button>}</form>
+            </li>
           </ul>
         </div>
       </div>
     </div>
+
+<ReactDimmer
+isOpen={isMenuOpen}
+exitDimmer={setMenu}
+zIndex={50}
+blur={1.5}
+/>
+</>
   );
 }

@@ -1,28 +1,16 @@
 import React from "react";
 import "./topbar.css";
 import { NotificationsNone, Language, Settings, } from "@material-ui/icons";
-import { Logaut } from "../../redux/apiCalls";
-import { logautUser } from "../../redux/userRedux";
-import {useDispatch} from "react-redux"
+
 import {Link}from "react-router-dom"
 
 
 export default function Topbar() {
- const dispatch = useDispatch() 
-const user  = JSON?.parse(JSON.parse(localStorage.getItem("persist:vandja"))?.user).currentUser?.isUser;
+
+//const user  = JSON?.parse(JSON.parse(localStorage.getItem("persist:vandja"))?.user).currentUser?.isUser;
 const loja  = JSON?.parse(JSON.parse(localStorage.getItem("persist:vandja"))?.lojaLogin)?.currentLoja;
  
 
-  const handleclikLogAutuser = (e)=>{
-    dispatch(logautUser())
- }
- 
-
-  const handleclik = (e)=>{
-   
-    Logaut(dispatch)
-  
-  }
 
 
   return (
@@ -59,7 +47,7 @@ const loja  = JSON?.parse(JSON.parse(localStorage.getItem("persist:vandja"))?.lo
             <Settings />
           </div>
           <img src={loja?.imagem} alt="" className="topAvatar" />
-           <form>{user? <button className="botaoSair topbarIconContainer" onClick={handleclikLogAutuser}>Sair</button>:<button className="botaoSair topbarIconContainer" onClick={handleclik}>Sair</button>}</form>
+           
         </div>
       </div>
     </div>
