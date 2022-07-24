@@ -14,6 +14,7 @@ import { Link} from "react-router-dom";
 import { userRequest } from "../../requestMetodos";
 import SiteInput from "../../components/InputSite/InputSite";
 import {updateEstabelecimento} from"./../../redux/apiCalls";
+import {updateToken} from"./../../redux/apiCalls";
 import copy from "copy-to-clipboard"
 import dotenv from "dotenv"
 
@@ -21,8 +22,9 @@ dotenv.config();
 
 export default function SiteManage() {
 
-  const [dados , getDados] = useState()
+  const [dados , getDados] = useState([])
   const [imput, setImput] = useState();
+  const [inputToken, setInputToken] = useState(); 
   const loja = JSON?.parse(JSON.parse(localStorage.getItem("persist:vandja")).lojaLogin)?.currentLoja
 
   const dinheiro = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'AKZ' })
@@ -47,6 +49,22 @@ export default function SiteManage() {
       })
   }
 
+  const handelChangeToken = (e)=>{
+    setInputToken((prev)=>{
+        return{...prev, [e.target.name]:e.target.value}
+    })
+}
+
+
+const  handelclicToken = ()=>{
+  const dado = {token: inputToken, id: dados[0]?._id}
+updateToken(dado)
+}
+  
+
+
+
+
   const handelClick = (e)=>{
     e.preventDefault()
 updateEstabelecimento(loja._id, imput)
@@ -68,6 +86,7 @@ updateEstabelecimento(loja._id, imput)
     
     }
 
+  
 
   return (
     loja ? 
@@ -284,7 +303,12 @@ updateEstabelecimento(loja._id, imput)
           </div>
           <div className="userShowInfo">
             <LocationSearching className="userShowIcon" />
-            <span className="userShowInfoTitle">{dados?.endereco}</span>
+            <span className="userShowInfoTitle">{dados[0]?._id}</span>
+          </div>
+
+          <div className="userShowInfo">
+            <LocationSearching className="userShowIcon" />
+            <span className="userShowInfoTitle">{dados[0]?.token_email}</span>
           </div>
         </div>
       </div>
@@ -349,6 +373,8 @@ updateEstabelecimento(loja._id, imput)
               />
             </div>
 
+            
+
             <div className="userUpdateItem">
               <label>Descricao site</label>
               <textarea   className="userUpdateInput"></textarea>
@@ -361,7 +387,22 @@ updateEstabelecimento(loja._id, imput)
               <label>Descricao slide-2</label>
               <textarea   className="userUpdateInput"></textarea>
             </div>
+
+            <div className="userUpdateItem">
+              <label>Token e-mail</label>
+              <input
+                type="text"
+                placeholder="token e-mail"
+                name="token_email"
+                className="userUpdateInput"
+               onChange={ handelChangeToken}
+              />
+            </div>
+
           </div>
+
+          
+
           <div className="userUpdateRight">
             <div className="userUpdateUpload">
               <img
@@ -374,7 +415,8 @@ updateEstabelecimento(loja._id, imput)
               </label>
               <input type="file" id="file" style={{ display: "none" }} />
             </div>
-            <button className="userUpdateButton">Actualizar</button>
+            <button className="userUpdateButton">Actualizar dados</button>
+            <button onClick={handelclicToken} className="userUpdateButton">Actualizar Token</button>
           </div>
         </form>
       </div>

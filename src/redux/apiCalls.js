@@ -180,6 +180,19 @@ export const infNova = async (dados)=>{
 }
 
 
+// update Token
+
+
+export const updateToken = async (dados)=>{
+    try{
+         await userRequest.put(`/site/token/update`, dados)
+       
+    }catch{}
+}
+
+
+
+
 // imgInput
 
 export const imgNova = async (dados)=>{
@@ -217,3 +230,6 @@ export const updateProdutoDesativar = async (id, produto)=>{
        
     }
 }
+
+
+

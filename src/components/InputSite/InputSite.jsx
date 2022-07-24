@@ -80,11 +80,11 @@ infNova(imput)
       <form className="newUserForm">
         <div className="newUserItem">
           <label>Nome </label>
-          <input type="text" placeholder="john"   onChange={handelchange} />
+          <input type="text" name="nome" placeholder="john"   onChange={handelchange} />
         </div>
         <div className="newUserItem">
           <label>SO</label>
-          <input type="text" placeholder="John Smith"   onChange={handelchange}/>
+          <input type="text" name="so" placeholder="John Smith"   onChange={handelchange}/>
         </div>
         <div className="newUserItem">
           <label>Email-1</label>
