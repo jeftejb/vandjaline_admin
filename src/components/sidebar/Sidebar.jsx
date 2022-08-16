@@ -31,13 +31,23 @@ export default function Sidebar() {
   };
   
   const handleclikLogAutuser = (e)=>{
-    dispatch(logautUser())
+    if (window.confirm("Deseja sair de sua conta ?") === true) {
+      dispatch(logautUser())
+    } else {
+     
+    }
+   
  }
  
 
   const handleclik = (e)=>{
+    if (window.confirm("Deseja sair de sua conta ?") === true) {
+      Logaut(dispatch)
+    } else {
+     
+    }
    
-    Logaut(dispatch)
+  
   
   }
   return (
