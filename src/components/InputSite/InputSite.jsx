@@ -67,7 +67,7 @@ infNova(imput)
       
       
     }else{
-     console.log("nem uma imagem selecionada")
+    // console.log("nem uma imagem selecionada")
     }
   
   

@@ -73,6 +73,12 @@ export default function Estabelecimento() {
               <span className="userShowInfoTitle">{dados?.emailLoja}</span>
             </div>
             <div className="userShowInfo">
+              <MailOutline className="userShowIcon" />
+              <span className="userShowInfoTitle">NIF: {dados?.nifLoja}</span>
+            </div>
+
+          
+            <div className="userShowInfo">
               <LocationSearching className="userShowIcon" />
               <span className="userShowInfoTitle">{dados?.provinciaLoja}</span>
               <span className="userShowInfoTitle">{dados?.municipioLoja}</span>

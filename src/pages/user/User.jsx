@@ -75,6 +75,10 @@ export default function User() {
               <LocationSearching className="userShowIcon" />
               <span className="userShowInfoTitle">{dados?.endereco}</span>
             </div>
+            <div className="userShowInfo">
+              <LocationSearching className="userShowIcon" />
+              <span className="userShowInfoTitle">{dados?.bi}</span>
+            </div>
           </div>
         </div>
         <div className="userUpdate">

@@ -56,9 +56,9 @@ if(insub){
       width: 120,
     },
     {
-      field: "transaction",
-      headerName: "Transaction Volume",
-      width: 160,
+      field: "bi",
+      headerName: "BI",
+      width: 200,
     },
     {
       field: "action",

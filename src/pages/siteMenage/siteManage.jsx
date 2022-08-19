@@ -266,8 +266,11 @@ updateEstabelecimento(loja._id, imput)
     <div className="userTitleContainer">
       <h1 className="userTitle">Perfil do site</h1>
       <Link to="/newUser">
-        <button className="userAddButton">Criar</button>
+        <button className="userAddButton">Inserir usuario</button>
       </Link>
+      <Link to="/newproduct">
+          <button className="productAddButton">Criar Produto</button>
+        </Link>
     </div>
     <div className="userContainer">
       <div className="userShow">
