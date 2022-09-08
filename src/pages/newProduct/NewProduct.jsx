@@ -4,6 +4,8 @@ import { novoProduto } from "../../redux/apiCalls";
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import app from "./../../firebase";
 import { publicRequest } from "../../requestMetodos";
+import { CircularProgress } from "@material-ui/core"
+import "./../../App.css";
 //import { cores } from "../../data";
 
 export default function NewProduct() {
@@ -12,6 +14,8 @@ export default function NewProduct() {
   const [file, setFile] = useState(null)
   const [categorias, setCategorias] = useState([])
   const [cat , getCat] = useState();
+  const [cor , setColo] = useState({});
+  const [loading, setLoading] = useState();
  
 
   const loja =  JSON?.parse(JSON.parse(localStorage.getItem("persist:vandja"))?.lojaLogin).currentLoja;
@@ -32,6 +36,8 @@ export default function NewProduct() {
     setImput((prev)=>{
       return{...prev, [e.target.name]:e.target.value}
     })
+    setColo(String( e.target.value))
+    
   }
 
   const handelCategoria = (e)=>{
@@ -39,7 +45,7 @@ export default function NewProduct() {
     setCategorias(e.target.value.split(","))
   }
 
-  const handelClick = (e)=>{
+  const handelClick = async (e)=>{
 
   e.preventDefault();
 
@@ -81,9 +87,16 @@ uploadTask.on('state_changed',
   () => {
     // Handle successful uploads on complete
     // For instance, get the download URL: https://firebasestorage.googleapis.com/...
-    getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+    getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
       const produto = {...imput, imagem:downloadURL,loja: loja?.nomeLoja, id_loja:loja?._id, categoria:categorias, actuacaoLoja:loja?.actuacao}
-         novoProduto(produto)
+      setLoading(true)
+      try{
+        await novoProduto(produto)
+        setLoading(false)
+      }  catch{
+        setLoading(false)
+      } 
+  
         
     });
   }
@@ -94,18 +107,33 @@ console.log(file? URL.createObjectURL(file) :"")
     
   }else{
     const produto = {...imput, imagem:"",loja: loja?.nomeLoja, id_loja:loja?._id, categoria:categorias, actuacaoLoja:loja?.actuacao}
-         novoProduto(produto)
+    setLoading(true)
+    try{
+      await novoProduto(produto)
+      setLoading(false)
+    }  catch{
+      setLoading(false)
+    } 
+
         
   }
 
 }
+
 
  
 
   
   return (
     <div className="newProduct">
-      <h1 className="addProductTitle">Novo Produto</h1>
+         <div className="product">
+       {loading && 
+      <div className="loading">
+        <CircularProgress/>
+      </div>
+      }
+      </div>
+      <h2 className="addProductTitle">Novo Produto</h2>
       <form className="addProductForm">
 
       <div className="addProductItem">
@@ -141,9 +169,9 @@ console.log(file? URL.createObjectURL(file) :"")
         </div>
         <div className="addProductItem">
           <label>Cor</label>
-          <select name="cor"  onChange={handelchange}>
-          <option disabled>Celecione uma cor </option>
-            <option value="#fff"    style = {{color:"#fff"}}>   cor selecionada</option>
+          <select name="cor"style={{color:cor}}  onChange={handelchange}>
+          <option  >Celecione uma cor </option>
+            <option value="#fff" >  Branca</option>
             <option value="#C0C0C0" style = {{color:"#C0C0C0"}}>cor selecionada</option>
             <option value="#FF0000" style = {{color:"#FF0000"}}>cor selecionada</option>
             <option value="#FFFF00" style = {{color:"#FFFF00"}}>cor selecionada</option>
@@ -193,6 +221,7 @@ console.log(file? URL.createObjectURL(file) :"")
         </div>
        {loja.ativo === true? <button onClick={handelClick} className="addProductButton">Criar</button> : ""}
        
+
       </form>
     </div>
   );

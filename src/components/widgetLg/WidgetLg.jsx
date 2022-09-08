@@ -41,7 +41,7 @@ export default function WidgetLg() {
   }
   return (
     <div className="widgetLg">
-      <h3 className="widgetLgTitle">Ultimas Tranzações</h3>
+      <h2 className="widgetLgTitle">Ultimas Tranzações</h2>
       <table className="widgetLgTable">
         <thead>
         <tr className="widgetLgTr">

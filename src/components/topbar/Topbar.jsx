@@ -16,7 +16,7 @@ const loja  = JSON?.parse(JSON.parse(localStorage.getItem("persist:vandja"))?.lo
   return (
     <div className="topbar">
       <div className="topbarWrapper">
-        <div className="topLeft">
+      <div className="topLeft">
           <span className="logo">Vandjaline/{loja?.nomeLoja}</span>
         </div>
 
@@ -29,7 +29,7 @@ const loja  = JSON?.parse(JSON.parse(localStorage.getItem("persist:vandja"))?.lo
           {loja?.ativo === true ?
           <>
         <Link to="/newproduct">
-          <button className="productAddButton">Criar</button>
+          <button className="productAddButtonn">Criar</button>
         </Link>
         </>
                :""}

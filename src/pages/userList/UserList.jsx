@@ -60,6 +60,7 @@ if(insub){
       headerName: "BI",
       width: 200,
     },
+    { field: "pontos", headerName: "Pontos", width: 200 },
     {
       field: "action",
       headerName: "Action",
@@ -70,7 +71,7 @@ if(insub){
             <Link to={"/user/" + params.row?._id}>
               <button className="userListEdit">Editar</button>
             </Link>
-            
+
             <DeleteOutline
               className="userListDelete"
               onClick={() => handleDelete(params.row?._id)}

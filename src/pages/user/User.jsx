@@ -50,6 +50,7 @@ export default function User() {
             <div className="userShowTopTitle">
               <span className="userShowUsername">{dados?.nomeCompleto}</span>
               <span className="userShowUserTitle">{dados?.intermediario}</span>
+              <span className="userShowUserTitle">{dados?.pontos}</span>
             </div>
           </div>
           <div className="userShowBottom">
@@ -79,6 +80,7 @@ export default function User() {
               <LocationSearching className="userShowIcon" />
               <span className="userShowInfoTitle">{dados?.bi}</span>
             </div>
+
           </div>
         </div>
         <div className="userUpdate">

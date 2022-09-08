@@ -93,7 +93,7 @@ updateEstabelecimento(loja._id, imput)
     
     <div className="user">
       <div className="userTitleContainer">
-        <h1 className="userTitle">Perfil da loja</h1>
+        <h4 className="userTitle">Perfil da loja</h4>
       </div>
       <div className="userContainer">
         <div className="userShow">
@@ -138,7 +138,7 @@ updateEstabelecimento(loja._id, imput)
             </div>
             <div className="userShowInfo">
               <LocationSearching className="userShowIcon" />
-              <span className="userShowInfoTitle">Partilha o seu negocio :<button onClick={funcaoCopiar}>Convidar Amigos</button> </span>
+              <span className="userShowInfoTitle">Partilhar minha Loja :<button onClick={funcaoCopiar}>Convidar Amigos</button> </span>
             </div>
           </div>
         </div>
@@ -196,15 +196,17 @@ updateEstabelecimento(loja._id, imput)
                   onChange={handelChange }
                 />
               </div>
+              <button className="userUpdateButton" onClick={handelClick}>Actualizar</button>
               
              
-              <span>A carteira digital "Kamba" é um aplicativo inovador 100% angolano que permite efectuar varios tipos de operações na internet como pagamentos transferencias e outros, link para fazer o download: <a href={process.env.REACT_APP_SITE_LINK_KAMBA}> Clique aqui para baixar o App</a> </span>
+              <span><br/>Para poder receber pagamentos adquirá já a carteira digital "Kamba" que é um aplicativo inovador 100% angolano que permite efectuar varios tipos de operações na internet como pagamentos transferencias e outros, link para fazer o download: <a href={process.env.REACT_APP_SITE_LINK_KAMBA}> Clique aqui para baixar o App</a> </span>
 
               
             </div>
+           
             <div className="userUpdateRight">
               
-              <button className="userUpdateButton" onClick={handelClick}>Actualizar</button>
+             
             </div>
           </form>
         </div>
@@ -264,7 +266,7 @@ updateEstabelecimento(loja._id, imput)
 
     :  <div className="user">
     <div className="userTitleContainer">
-      <h1 className="userTitle">Perfil do site</h1>
+      <h4 className="userTitle">Perfil do site</h4>
       <Link to="/newUser">
         <button className="userAddButton">Inserir usuario</button>
       </Link>

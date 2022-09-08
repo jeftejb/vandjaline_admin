@@ -5,15 +5,18 @@ import { Publish } from "@material-ui/icons";
 import { useEffect, useState } from "react";
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import app from "./../../firebase";
+import { CircularProgress } from "@material-ui/core"
 import { publicRequest } from "../../requestMetodos";
+import "./../../App.css";
 export default function Product() {
-    const location = useLocation()
-    const produtoId = location.pathname.split("/")[2]
-    const [input, getInput] = useState()
-    const [file, setFile] = useState(null)
-    const [progress ,  getProgress] = useState(0)
-    const [produto, getProduto] = useState()
-const param = useState()
+    const location = useLocation();
+    const produtoId = location.pathname.split("/")[2];
+    const [input, getInput] = useState();
+    const [file, setFile] = useState(null);
+    const [progress ,  getProgress] = useState(0);
+    const [produto, getProduto] = useState();
+    const [loading, setLoading] = useState();
+    const param = useState();
 
     const handelChange = (e)=>{
         getInput((prev)=>{
@@ -40,7 +43,7 @@ const param = useState()
     },[produtoId, param])
 
  
-    const handelClick = (e)=>{
+    const handelClick = async(e)=>{
         e.preventDefault();
         if (file){
             const fileName = new Date().getTime()+ file.name;
@@ -73,23 +76,46 @@ const param = useState()
           (error) => {
             // Handle unsuccessful uploads
           },
-          () => {
+          ()=>{
             // Handle successful uploads on complete
             // For instance, get the download URL: https://firebasestorage.googleapis.com/...
-            getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+            getDownloadURL(uploadTask.snapshot.ref).then(async(downloadURL) => {
                 const produtoinput = input? {...input, imagem:downloadURL} : {imagem:downloadURL}
-              updateProduto(produto?._id, produtoinput)
+             
+                setLoading(true);
+                try{
+                 await updateProduto(produto?._id, produtoinput)
+                  setLoading(false);
+                }catch{
+                  setLoading(false);
+              }
             });
           }
         );
 
         }else{
-            updateProduto(produtoId , input)
+    
+          setLoading(true);
+          try{
+           await updateProduto(produtoId , input)
+            setLoading(false);
+          }catch{
+            setLoading(false);
+          }
+        
+          
         }
        
     }    
   return (
+    
     <div className="product">
+       {loading && 
+      <div className="loading">
+        <CircularProgress/>
+      </div>
+      }
+       
       <div className="productTitleContainer">
         <h1 className="productTitle">Produto</h1>
         <Link to="/newproduct">
@@ -109,8 +135,12 @@ const param = useState()
                       <span className="productInfoValue">{produto?._id}</span>
                   </div>
                   <div className="productInfoItem">
-                      <span className="productInfoKey">Quanti Stock:</span>
-                      <span className="productInfoValue">5123</span>
+                      <span className="productInfoKey">Preço:</span>
+                      <span className="productInfoValue">{produto?.preco}</span>
+                  </div>
+                  <div className="productInfoItem">
+                      <span className="productInfoKey">Quantidade :</span>
+                      <span className="productInfoValue">{produto?.quanti}</span>
                   </div>
                   <div className="productInfoItem">
                       <span className="productInfoKey">activo:</span>
@@ -118,7 +148,10 @@ const param = useState()
                   </div>
                   <div className="productInfoItem">
                       <span className="productInfoKey">stock:</span>
-                      <span className="productInfoValue">{String(produto?.stock)}</span>
+                      <span className="productInfoValue">{String(produto?.stock)}</span><br/>
+                  </div>
+                  <div className="productInfoItem">
+                      <p/><span className="productInfoValueDes">{String(produto?.descricao)}</span>
                   </div>
               </div>
           </div>
@@ -126,6 +159,16 @@ const param = useState()
       <div className="productBottom">
           <form className="productForm">
               <div className="productFormLeft">
+              <div className="productUpload">
+                      <img  src={produto?.imagem? produto?.imagem : file? URL.createObjectURL(file):''}  alt="" className="productUploadImg" />
+                      <br/><label >
+                          
+                          <Publish/>
+                      </label>
+                      <input type="file" accept="image/*" id="file" onChange={(e)=>setFile(e.target.files[0])} />
+                            <br/><span>Actualizar {progress} %</span>
+                  </div>
+
                   <label>Produto Name</label>
                   <input type="text" placeholder={produto?.titulo} name="titulo" onChange={handelChange} />
                   <label>Produto Preco</label>
@@ -145,21 +188,15 @@ const param = useState()
                       <option value="true">Sim</option>
                       <option value="false">Não</option>
                   </select>
-              </div>
+                  <button disabled={loading} className="productButton" onClick={handelClick}>Actualizar</button>
+                   </div>
               <div className="productFormRight">
-                  <div className="productUpload">
-                      <img  src={produto?.imagem? produto?.imagem : file? URL.createObjectURL(file):''}  alt="" className="productUploadImg" />
-                      <label >
-                          
-                          <Publish/>
-                      </label>
-                      <input type="file" accept="image/*" id="file" onChange={(e)=>setFile(e.target.files[0])} />
-                            <span>Actualizar {progress} %</span>
-                  </div>
-                  <button className="productButton" onClick={handelClick}>Actualizar</button>
+                 
+                  
               </div>
           </form>
       </div>
     </div>
+   
   );
 }
