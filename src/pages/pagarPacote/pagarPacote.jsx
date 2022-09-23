@@ -12,7 +12,7 @@ import "./pagar.css"
 
 const PagarPacote = ()=>{
     const pacote =  window.location.href.split('?')[1] ;
-   const valorInicial = window.location.href.split('?')[2] ;
+   const valorInicial = window.location.href.split('?')[2];
    const dinheiro = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'AKZ' })
     
   const [input, setInput] = useState()
@@ -35,7 +35,7 @@ const handelClick = (e)=>{
             const res = await publicRequest.get("/estabelecimento/find/email/"+input.email)
             setResult(res.data)
          }catch(error){
-             console.log(error)
+            // console.log(error)
          }
     }
 
@@ -61,11 +61,11 @@ const val = Number(dinh?.mes)
 
 const total = val? val * valorInicial : valorInicial
 
-const subTotal  = valorInicial === total  ? valorInicial : total - (total * 0.1) 
+const subTotal  = total === valorInicial ? valorInicial :  val === 1  ? valorInicial : total - (total * 0.05) 
 
 const statuPagamento = pacote ==="gratis"? "Aceite" : "Pendente";
 
-console.log(subTotal)
+
 
 const handelClickPagar =()=>{
     const enviaPagamento = async ()=>{
@@ -73,12 +73,12 @@ const handelClickPagar =()=>{
         try{
         await publicRequest.post("/autenticacao/email/pagamento/loja" , {email : input.email,  valor : subTotal, loja:result?.nomeLoja, pacote: pacote})
          }catch(error){
-             console.log(error)
+             //console.log(error)
          }
     }
 
     const alerta = ()=>{
-        alert("Solicitacao de pagamento feita com  sucesso !")
+        alert("Solicitacao de pagamento feita com  sucesso, já podes efectuar o login")
     }
 
     if(input){
@@ -132,10 +132,13 @@ const handelClickPagar =()=>{
                <tbody>
                    <tr>
                    <td>{pacote}</td>
-                   <td>{dinheiro.format(valorInicial)} </td>
+                   <td><span>{dinheiro.format(Number(valorInicial))}</span> </td>
                    <td className="mudar">
                        {pacote !== "gratis" ?
                        <>
+                       {
+                        
+                       }
                         <select name="mes" id ="" onChange={calcularValor}>
                           <option value="1" >1 Mês</option>
                           <option value="3">3 Mêses</option>
@@ -157,8 +160,10 @@ const handelClickPagar =()=>{
 
 
            <div className="concluir">
-               <button onClick={handelClickPagar} className="butaoPlano">Concluir</button>
-           </div>
+            {result ? 
+            result?.plano >= 0? <span>Este estabelecimento já tem um plano activo </span> : <button onClick={handelClickPagar} className="butaoPlano">Concluir</button>
+           :""}
+             </div>
        </div>
 
    </div>    

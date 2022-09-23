@@ -64,6 +64,7 @@ const Login = () => {
             <input style={{padding:10, marginBottom:20}} type="password" placeholder="Palavra passe" onChange={(e)=>setUserPass(e.target.value)}/>
            
             <button style={{padding:10, width:100 }} disabled={loading} onClick={handleClickAdmin}>Login Admin </button>
+            <span style={{fontSize:"12px", marginTop:"10px", textTransform:"uppercase"}} >Caso hover algum problema por favor entre em contacto em a nossa equipa de suporte  &nbsp; <a href="/login" style={{textTransform:"none" , fontSize:"14px"}}>uservandja@gmail.com</a> </span>
 
             {loading && 
 <div className="loading">

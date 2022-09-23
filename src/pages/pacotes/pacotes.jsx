@@ -44,7 +44,7 @@ import { Link } from "react-router-dom";
                     </ul>
                     </span>
                 </div>
-                <Link to="/pagarpacote?gratis?0" className="butaoInicio" > Escolher</Link>
+                <Link to={`/pagarpacote?gratis?${0}`} className="butaoInicio" > Escolher</Link>
             </div>
 
             <div className="pacoteInicio" >
@@ -65,7 +65,7 @@ import { Link } from "react-router-dom";
                     </ul>
                     </span>
                 </div>
-                
+                {/*<Link to={`/pagarpacote?facilita?${15}`} className="butaoInicio" > Indisponivel</Link>*/}
             </div>
 
             <div className="pacoteInicio">
@@ -91,9 +91,9 @@ import { Link } from "react-router-dom";
                     </span>
 
                 </div>
-                
+                {/*<Link to={`/pagarpacote?comleto?${20}`} className="butaoInicio"> Indisponivel</Link>*/}
             </div>
-
+           
             </div>
         </div>
 

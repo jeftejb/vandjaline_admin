@@ -1,6 +1,6 @@
 import React from "react";
 import "./topbar.css";
-import { NotificationsNone, Language, Settings, } from "@material-ui/icons";
+//import { NotificationsNone, Language, Settings, } from "@material-ui/icons";
 
 import {Link}from "react-router-dom"
 
@@ -34,7 +34,7 @@ const loja  = JSON?.parse(JSON.parse(localStorage.getItem("persist:vandja"))?.lo
         </>
                :""}
           </div>
-        
+         {/*
           <div className="topbarIconContainer">
             <NotificationsNone />
             <span className="topIconBadge">0</span>
@@ -45,7 +45,8 @@ const loja  = JSON?.parse(JSON.parse(localStorage.getItem("persist:vandja"))?.lo
           </div>
           <div className="topbarIconContainer">
             <Settings />
-          </div>
+          </div>*/}
+         
           <img src={loja?.imagem} alt="" className="topAvatar" />
            
         </div>
