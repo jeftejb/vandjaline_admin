@@ -25,6 +25,9 @@ import NovaCategoria from "./pages/novaCategoria/novaCategoria";
 import SiteConfig from "./pages/siteMenage/siteManage";
 import Pacotes from "./pages/pacotes/pacotes";
 import PagarPacote from "./pages/pagarPacote/pagarPacote";
+import RecuperarSenhaEmail from "./pages/recuperaSenhaAdmin/recuperaSenhaAdmin";
+import RecuperaPasseEstabelecimento from "./pages/recuperaSenhaAdminFim/recuperaSenhaAdminFim";
+
 
 
 
@@ -43,6 +46,8 @@ admin = res
 }
 
 const usuarioAdmin  = JSON?.parse(JSON.parse(localStorage?.getItem("persist:vandja"))?.user).currentUser ;
+
+const email  = window.location.pathname.split("/")[4];
 
   return (
     <Router>
@@ -127,14 +132,16 @@ const usuarioAdmin  = JSON?.parse(JSON.parse(localStorage?.getItem("persist:vand
 
       </div> 
       </>
-          :<> <Route  path="/inicial"><Pacotes/></Route>
+          : email? 
+          <Route exact path="/recuperar/senha/mudar/:email"><RecuperaPasseEstabelecimento/></Route>
+          :
+           <> <Route  path="/inicial"><Pacotes/></Route>
           <Route exact path="/login"><Login/></Route>
           <Route exact path="/admin"><LoginAdmin/></Route>
           <Route exact path="/pagarpacote"><PagarPacote/></Route>
-          <Redirect to ="inicial"/>
-       
-            
-     
+          <Route exact path="/recuperar_senha_email"><RecuperarSenhaEmail/></Route>
+          <Redirect to='/inicial'/>
+         
         </>
 }
            

@@ -2,6 +2,7 @@ import React from "react"
 import { useState } from "react"
 import {useDispatch, useSelector} from "react-redux"
 import { loginAdmin} from "./../../redux/apiCalls"
+import{Link} from "react-router-dom"
 import "./../../App.css"
 
 const Login = () => {
@@ -63,8 +64,9 @@ const Login = () => {
             <input style={{padding:10, marginBottom:20}} type="text" placeholder="Email" onChange = {(e)=>setUserName(e.target.value)}/>
             <input style={{padding:10, marginBottom:20}} type="password" placeholder="Palavra passe" onChange={(e)=>setUserPass(e.target.value)}/>
            
-            <button style={{padding:10, width:100 }} disabled={loading} onClick={handleClickAdmin}>Login Admin </button>
-            <span style={{fontSize:"12px", marginTop:"10px", textTransform:"uppercase"}} >Caso hover algum problema por favor entre em contacto em a nossa equipa de suporte  &nbsp; <a href="/login" style={{textTransform:"none" , fontSize:"14px"}}>uservandja@gmail.com</a> </span>
+            <button style={{padding:5, width:100 }} disabled={loading} onClick={handleClickAdmin}>Login Admin </button>
+              <Link to="/recuperar_senha_email">Não me lembro da palavra passe</Link>
+            <span style={{fontSize:"12px", marginTop:"10px", textTransform:"uppercase"}} >Caso hover algum problema por favor entre em contacto com a nossa equipa de suporte  &nbsp; <a href="/login" style={{textTransform:"none" , fontSize:"14px"}}>uservandja@gmail.com</a> </span>
 
             {loading && 
 <div className="loading">

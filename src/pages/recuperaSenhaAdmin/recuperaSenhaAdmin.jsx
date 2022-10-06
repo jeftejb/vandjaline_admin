@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import "./confirmarEmail/user.css";
-import Navbar from "./../components/Navbar";
-import Rodape from "./../components/Rodape";
-import { publicRequest } from './../requesteMetodos';
+//import "./confirmarEmail/user.css";
+import { publicRequest } from '../../requestMetodos';
+import "./style.css"
 
 
  const RecuperaSenhaAdmin = () => {
@@ -23,12 +22,8 @@ const alerta = ()=>{
 }
 if(dados !== undefined){
   const enviarEmail = async ()=>{
-
     try{
-         await publicRequest.post(`/autenticacao/email/recuperacao`, dados)
-          
-        
-         
+         await publicRequest.post(`/autenticacao/email/recuperacao/estabelecimento`, dados) 
     }catch(erro){
 console.log(erro)
     }
@@ -42,21 +37,22 @@ console.log(erro)
  
 }
 
+
   return (
     <div>
-  <Navbar/>
+
     <div className="user">
 <div className="confirEmail">
-<h1>Recuperar Palavra Passe do estabelecimento </h1>
- <span>Por favor insere seu email.</span>
+<h1>Recuperar Palavra Passe  </h1>
+ <span>Por favor coloque seu email.</span>
  <form>
- <input type="email" name="email" id="" placeholder='Email' onChange={handelEmail} required/>
- <button onClick={nadelClickTerminar} >Enviar</button>
+ <input type="email" name="email" id="" placeholder='Email' onChange={handelEmail}  required/>
+ <button onClick={nadelClickTerminar}  >Enviar</button>
  </form>
  </div>
 
     </div>
-    <Rodape/> 
+    
        </div>
 
        

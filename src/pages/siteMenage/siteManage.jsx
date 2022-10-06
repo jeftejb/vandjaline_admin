@@ -65,9 +65,9 @@ updateToken(dado)
 
 
 
-  const handelClick = (e)=>{
-    e.preventDefault()
+  const handelClick = ()=>{
 updateEstabelecimento(loja._id, imput)
+alert("Ateração feita com sucesso por favor reinicie a sua conta para amnter as alterações")
   }
     
 
