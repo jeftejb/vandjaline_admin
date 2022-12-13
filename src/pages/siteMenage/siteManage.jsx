@@ -40,7 +40,7 @@ export default function SiteManage() {
     }
     getInf()
 
-    },[])
+    },[loja])
 
 
     const handelChange = (e)=>{
@@ -65,9 +65,12 @@ updateToken(dado)
 
 
 
-  const handelClick = ()=>{
-updateEstabelecimento(loja._id, imput)
-alert("Ateração feita com sucesso por favor reinicie a sua conta para amnter as alterações")
+  const handelClick = async (e)=>{
+    e.preventDefault();
+   
+      await updateEstabelecimento(loja._id, imput)
+      alert("Ateração feita com sucesso por favor reinicie a sua conta para amnter as alterações")
+
   }
     
 
@@ -145,9 +148,9 @@ alert("Ateração feita com sucesso por favor reinicie a sua conta para amnter a
         <div className="userUpdate">
           <span className="userUpdateTitle">Editar</span>
           <form className="userUpdateForm">
-            <div className="userUpdateLeft">
+            <div className="userUpdateLeft" id="userUpdateLeft">
               <div className="userUpdateItem">
-                <label>Nome</label>
+                <label >Nome</label>
                 <input
                   type="text"
                   placeholder={loja?.nomeLoja}
@@ -163,6 +166,36 @@ alert("Ateração feita com sucesso por favor reinicie a sua conta para amnter a
                   placeholder={loja?.enderecoLoja}
                   className="userUpdateInput"
                   name="enderecoLoja"
+                  onChange={handelChange }
+                />
+              </div>
+              <div className="userUpdateItem">
+                <label>Provincia</label>
+                <input
+                  type="text"
+                  placeholder={loja?.provinciaLoja}
+                  className="userUpdateInput"
+                  name="provinciaLoja"
+                  onChange={handelChange }
+                />
+              </div>
+              <div className="userUpdateItem">
+                <label>Municipio</label>
+                <input
+                  type="text"
+                  placeholder={loja?.municipioLoja}
+                  className="userUpdateInput"
+                  name="municipioLoja"
+                  onChange={handelChange }
+                />
+              </div>
+              <div className="userUpdateItem">
+                <label>Descrição</label>
+                <textarea
+                  
+                  placeholder={loja?.descricao}
+                  className="userUpdateInput"
+                  name="descricao"
                   onChange={handelChange }
                 />
               </div>
@@ -204,10 +237,7 @@ alert("Ateração feita com sucesso por favor reinicie a sua conta para amnter a
               
             </div>
            
-            <div className="userUpdateRight">
-              
-             
-            </div>
+            
           </form>
         </div>
 

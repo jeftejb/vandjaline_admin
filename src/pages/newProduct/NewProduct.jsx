@@ -169,25 +169,8 @@ console.log(file? URL.createObjectURL(file) :"")
         </div>
         <div className="addProductItem">
           <label>Cor</label>
-          <select name="cor"style={{color:cor}}  onChange={handelchange}>
-          <option  >Celecione uma cor </option>
-            <option value="#fff" >  Branca</option>
-            <option value="#C0C0C0" style = {{color:"#C0C0C0"}}>cor selecionada</option>
-            <option value="#FF0000" style = {{color:"#FF0000"}}>cor selecionada</option>
-            <option value="#FFFF00" style = {{color:"#FFFF00"}}>cor selecionada</option>
-            <option value="#00FF00" style = {{color:"#00FF00"}}>cor selecionada</option>
-            <option value="#00FFFF" style = {{color:"#00FFFF"}}>cor selecionada</option>
-            <option value="#0000FF" style = {{color:"#0000FF"}}>cor selecionada</option>
-            <option value="#FF00FF" style = {{color:"#FF00FF"}}>cor selecionada</option>
-            <option value="#000000" style = {{color:"#000000"}}>cor selecionada</option>
-            <option value="#808080" style = {{color:"#808080"}}>cor selecionada</option>
-            <option value="#800000" style = {{color:"#800000"}}>cor selecionada</option>
-            <option value="#808000" style = {{color:"#808000"}}>cor selecionada</option>
-            <option value="#008000" style = {{color:"#008000"}}>cor selecionada</option>
-            <option value="#008080" style = {{color:"#008080"}}>cor selecionada</option>
-            <option value="#000080" style = {{color:"#000080"}}>cor selecionada</option>
-            <option value="#800080" style = {{color:"#800080"}}>cor selecionada</option>
-          </select>
+          <input type="color" name="cor" style={{backgroundColor:cor}}  onChange={handelchange}/>
+          
         </div>
         <div className="addProductItem">
           <label>Preço</label>

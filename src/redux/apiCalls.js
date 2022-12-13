@@ -113,7 +113,7 @@ export const novoProduto = async (produto)=>{
         window.location.reload(false);
       }
     try{
-         await publicRequest.post(`/produtos`, produto)
+         await publicRequest.post(`/produtos/cadastro`, produto)
          notifica()
          refress()
     }catch(erro){
@@ -151,7 +151,7 @@ export const deleteEstabelecimento = async (id)=>{
 export const updateEstabelecimento = async (id, dados)=>{
     try{
          await userRequest.put(`/estabelecimento/${id}`, dados)
-
+       
     }catch(erro){
        
     }
